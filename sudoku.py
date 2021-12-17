@@ -205,9 +205,9 @@ def jouer(x) :
 
     while remplie==False :
         #Je demande à l'utlisateur de saisir une ligne, colonne et valeur
-        input("Entrez le numéro de la ligne", ligne)
-        input("Entrez le numéro de la colonne", colonne)
-        input("Entrez la valeur", valeur)
+        ligne = input("Entrez le numéro de la ligne")
+        colonne = input("Entrez le numéro de la colonne")
+        valeur = input("Entrez la valeur")
 
         #J'ajoute cette valeur à l'emplacement choisi par l'utlisateur (à la case d'indice x[i][j])
         ajouter(x, ligne, colonne, valeur)
