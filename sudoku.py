@@ -67,8 +67,150 @@ def afficher(x):
         print("".join(n+s for (n, s) in zip(valeurs[ligne-1], ligne1.split("."))))
         print([ligne2, ligne3, ligne4][(ligne % 9 == 0) + (ligne % 3 == 0)])
 
-def ligne(x, i):
+
+def unique(x) :
+    """"
+    Renvoie True si tous les éléments de x sont différents et False si au moins deux éléments de x sont identiques
+    """
+    #On parcourt la liste x
+    for i in range(10) :
+        #On compte le nombre d'occurence d'un élement dans la liste 
+        #Si on trouve un nombre d'occurence d'un élément supérieur à 1 fois(c'est-à-dire que l'élément est retrouvé plus d'une fois dans la liste) alors on retourne false 
+        if i > 0 and x.count(i) > 1 : # Décompte du nombre de l'élélent i dans la liste x en excluant le décompte des 0
+            return False
+        else : 
+            pass
+    return True     
+
+
+def ligne(x, i) : 
+
     """
     Renvoie la ligne i de la grille de sudoku x
     """
-    return x[i-1]
+    line = x[i-1]
+
+    # print("Voici les chiffres de la ", i, "ème ligne : ", line)
+    return line
+
+
+def colonne(x, i) : 
+    """
+    Renvoie la colonne i de la grille de sudoku x
+    """
+    c =[] 
+
+    for j in range(9) :
+        c.append(x[j][i-1])
+        
+    # print("Voici les chiffres de la ", i, "ème colonne : ", c)
+    return c  
+
+
+def region(x, i) :  
+    """
+    renvoie la region i de la grille de sudoku 
+    """    
+    # Région 1 = haut gauche 
+    # Région 2 = milieu centre
+    # Région 3 = haut droite
+    # Région 4 = milieu droite
+    # Région 5 = milieu centre
+    # Région 6 = milieu gauche
+    # Région 7 = bas gauche 
+    # Région 8 = bas centre
+    # Région 9 = Bas droite 
+       
+    if i >= 10 or i <1 : # Vérification de l'existence de la région 
+        return False
+
+    c = []
+    for line in range(9):
+        for colu in range(9):
+            k = 3*(line//3) + (colu//3) + 1
+            if not k != i:
+                c.append(x[line][colu])
+    # print("Voici les chiffres de la ", i, "ème région : ", c)
+    return c    
+    
+
+def ajouter(x, i, j, v ) :
+
+    if i < 1 or j < 1 or i > 9 or j > 9 : # Vérification de l'existence des coordonnées
+        return False  
+    
+    """
+    Une fois les coordonnées obtenuees, on vérifie qu'il s'agit d'une case vide (c'est à dire 0) 
+    on vérifie que la valeur n'est pas disponible sur ligne, sur la colonne et sur la région (appel de la fonction unique) 
+    Si la valeur est déjà dans la colonne, région ou ligne avec restaurer la valeur 0
+    
+    """
+
+
+def verifier(x) :
+    """
+    Vérifie que la grille de sudoku a été correctement remplie et renvoie True si oui
+    """
+    # Verification du remplissage de la grille 
+    for i in range(len(x)) :
+        for j in range(len(x)) :
+            if x[i][j]==0 :
+                return False
+
+    # Verification des lignes
+    for i in range(1,10) : 
+        line = ligne(x, i)
+        #print('line: ', ligne(x, i))
+        if unique(line)  == False :
+            return False
+
+    # Verification des colonnes
+    for i in range(1, 10) : 
+        colu = colonne(x, i)
+        # print('colonne :', colu)
+        if unique(colu) == False : 
+            return False 
+
+    # Verification des régions
+    for i in range(1, 10) : 
+        reg = region(x, i)
+        # print('region :', reg)
+        if unique(reg) == False :
+            return False 
+    
+    return True
+
+
+def jouer(x) : 
+
+    pass
+
+
+def resoudre(x) : 
+
+    pass 
+
+def nouvelle() : 
+
+    pass
+
+
+# L'argument d'une fonction c'est ce qu'on lui donne pour quelle puisse nous renvoyeer qqch
+
+# Fonction len() : Pour nous donner le nombre d'éléments dans la liste ou chaîne de charactère
+
+# Pour récuperer l'élément d'une liste : 
+# liste = [1, 2, 5, 7] 
+# print(liste[2]) // Et cela renvoie 5
+
+# Pour rajouter un élément à la liste on utilise .append()
+# liste = liste.append(5)
+# print(liste) // Cela renvoie [1, 2, 5, 7, 5]
+
+# le mot return explique à la fonction ce qu'elle doit nous renvoyer 
+
+# Pour la région 1 exemple :  On cherche a ce que ça nous renvoie les trois premiers des trois premières lignes 
+# 3 × ((i − 1)//3) + ((j − 1)//3) + 1
+
+x = grille_2
+afficher(x) 
