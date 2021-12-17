@@ -139,10 +139,17 @@ def ajouter(x, i, j, v ) :
     if i < 1 or j < 1 or i > 9 or j > 9 : # Vérification de l'existence des coordonnées
         return False  
 
-    v = x[i - 1][j - 1]
-    print(v)
+    """ 
+    La partie de la ligne 144 à la ligne 147 part du principe qu'il s'agit d'un nouvelle partie et que les cases pré-remplies ne doivent pas être modifiées.
+    Seules les cases contenat des zéros peuvent être modifiées.
+     """
+    v = x[i - 1][j - 1] # Une fois les coordonnées obtenuees, on vérifie qu'il s'agit d'une case vide (c'est à dire 0)
+    # print(v)
+    if v != 0 :
+        return False  
+
     
-""" # On cherche à savoir s'il s'agit d'une case vide. on vérifie donc si la valeur présente 
+# On cherche à savoir s'il s'agit d'une case vide. on vérifie donc si la valeur présente 
     '''ajoute la valeur v au coordonnées (i,j) de la grille x'''
     k = 3 * ((i - 1) // 3) + ((j - 1)//3) + 1
     sauvegarde = x[i - 1][j - 1]
@@ -151,9 +158,7 @@ def ajouter(x, i, j, v ) :
         x[i - 1][j - 1] = sauvegarde
 
     return x
-"""
     """
-    Une fois les coordonnées obtenuees, on vérifie qu'il s'agit d'une case vide (c'est à dire 0) 
     on vérifie que la valeur n'est pas disponible sur ligne, sur la colonne et sur la région (appel de la fonction unique) 
     Si la valeur est déjà dans la colonne, région ou ligne avec restaurer la valeur 0
     
