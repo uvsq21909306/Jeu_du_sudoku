@@ -195,9 +195,10 @@ def verifier(x) :
 
 
 def jouer(x) : 
-
-    pass
-
+    #Tant que la grille n'est pas entièrement remplie c'est-à-dire qu'il y a au moins une case vide
+        #Je demande à l'utlisateur de saisir une ligne, colonne et valeur
+        #J'ajoute cette valeur à l'emplacement choisi par l'utlisateur (à la case d'indice x[i][j])
+        #J'affiche la grille
 
 def resoudre(x) : 
 
