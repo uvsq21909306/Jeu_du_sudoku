@@ -200,7 +200,8 @@ def verifier(x) :
 
 
 def jouer(x) :
-
+    #On affiche la grille une première fois
+    afficher(x)
     remplie = verifier(x)
 
     while remplie==False :
