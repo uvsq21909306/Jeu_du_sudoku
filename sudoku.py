@@ -213,8 +213,10 @@ def jouer(x) :
         ajouter(x, ligne, colonne, valeur)
         remplie = vérifie(x)
 
+        #J'affiche la nouvelle grille
+        afficher(x)
+
     print("La grille et remplie")
-    print(x)
 
 def resoudre(x) : 
 
