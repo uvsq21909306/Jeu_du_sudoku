@@ -145,9 +145,8 @@ def ajouter(x, i, j, v ) :
      """
      # Une fois les coordonnées obtenuees, on vérifie qu'il s'agit d'une case vide (c'est à dire 0)
     valeur_courante = x[i - 1][j - 1] 
-    print("case x[i][j]",v)
+    print("case x[i][j]",valeur_courante)
     if valeur_courante != 0 :
-        print("La case n'est pas égale à 0")
         return False  
 
     '''ajoute la valeur v au coordonnées (i,j) de la grille x'''
@@ -155,10 +154,8 @@ def ajouter(x, i, j, v ) :
     x[i - 1][j - 1] = v
     if (not unique(ligne(x, i)) or not unique(colonne(x, j)) or not unique(region(x, k))):
         x[i - 1][j - 1] = valeur_courante
-        print("La valeur est déjà disponible")
         return False
 
-    afficher(x)
     print("C'est bon")
     return True
     """
@@ -209,20 +206,20 @@ def jouer(x) :
 
     while remplie==False :
         #Je demande à l'utlisateur de saisir une ligne, colonne et valeur
-        ligne = input("Entrez le numéro de la ligne")
-        colonne = input("Entrez le numéro de la colonne")
-        valeur = input("Entrez la valeur")
+        ligne = int(input("Entrez le numéro de la ligne"))
+        colonne = int(input("Entrez le numéro de la colonne"))
+        valeur = int(input("Entrez la valeur"))
 
         #J'ajoute cette valeur à l'emplacement choisi par l'utlisateur (à la case d'indice x[i][j])
         if ajouter(x, ligne, colonne, valeur)==False:
-            print("La case choise est déjà remplie ! ")
+            print("La case choisie est déjà remplie ! ")
         else:
             remplie = verifier(x)
 
         #J'affiche la nouvelle grille
         afficher(x)
 
-    print("La grille et remplie")
+    print("La grille est remplie")
 
 def resoudre(x) : 
 
@@ -252,6 +249,6 @@ def nouvelle() :
 
 x = grille_1
 
-#jouer(x)
+jouer(x)
 
-#ajouter(x, 1, 1, 3)
+#ajouter(x, 1, 1, 1)
