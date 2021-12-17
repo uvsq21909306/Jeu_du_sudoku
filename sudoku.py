@@ -211,7 +211,7 @@ def jouer(x) :
 
         #J'ajoute cette valeur à l'emplacement choisi par l'utlisateur (à la case d'indice x[i][j])
         ajouter(x, ligne, colonne, valeur)
-        remplie = vérifie(x)
+        remplie = verifier(x)
 
         #J'affiche la nouvelle grille
         afficher(x)
@@ -244,8 +244,6 @@ def nouvelle() :
 # Pour la région 1 exemple :  On cherche a ce que ça nous renvoie les trois premiers des trois premières lignes 
 # 3 × ((i − 1)//3) + ((j − 1)//3) + 1
 
-x = grille_2
-i = 1
-j = 2
-v = 3
-ajouter(x,i, j, v) 
+x = grille_1
+
+jouer(x)
